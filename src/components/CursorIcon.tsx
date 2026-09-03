@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 interface CursorIconProps {
   type: string;
@@ -81,7 +82,7 @@ export const CursorIcon: React.FC<CursorIconProps> = ({
   const accent = '#007AFF';
 
   const svgFile = SVG_MAP[type] || `${type}.svg`;
-  const svgUrl = `${import.meta.env.BASE_URL}cursors/${svgFile}`;
+  const svgUrl = getAssetUrl(`cursors/${svgFile}`);
 
   const renderShape = () => {
     switch (type) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { APP_CONFIG } from '../config';
 import { Menu, X, ArrowUpRight, Github, Sun, Moon } from 'lucide-react';
 import { FirefoxIcon, EdgeIcon } from './BrowserIcons';
+import { getAssetUrl } from '../utils/assets';
 
 interface NavbarProps {
   onNavigate?: (sectionId: string) => void;
@@ -57,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           aria-label="Custom Clicks Cursor Home"
         >
           <img
-            src={`${import.meta.env.BASE_URL}customclick-icon.png`}
+            src={getAssetUrl('customclick-icon.png')}
             alt="Custom Clicks Cursor Icon"
             className="w-8 h-8 rounded-lg shadow-sm object-cover transition-transform duration-200 group-hover:scale-105"
             referrerPolicy="no-referrer"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CursorIcon } from './CursorIcon';
 import { APP_CONFIG } from '../config';
+import { getAssetUrl } from '../utils/assets';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -19,7 +20,7 @@ export const Footer: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <img
-              src={`${import.meta.env.BASE_URL}customclick-icon.png`}
+              src={getAssetUrl('customclick-icon.png')}
               alt="Custom Clicks Icon"
               className="w-7 h-7 rounded-lg object-cover shadow-sm"
               referrerPolicy="no-referrer"

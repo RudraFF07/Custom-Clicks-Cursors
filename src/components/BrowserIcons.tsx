@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 interface BrowserIconProps {
   className?: string;
@@ -15,7 +16,7 @@ export const FirefoxIcon: React.FC<BrowserIconProps> = ({
 }) => {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}firefox.png`}
+      src={getAssetUrl('firefox.png')}
       width={size}
       height={size}
       alt="Mozilla Firefox"
@@ -37,7 +38,7 @@ export const EdgeIcon: React.FC<BrowserIconProps> = ({
 }) => {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}edge.png`}
+      src={getAssetUrl('edge.png')}
       width={size}
       height={size}
       alt="Microsoft Edge"

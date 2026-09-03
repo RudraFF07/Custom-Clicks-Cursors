@@ -40,10 +40,10 @@ export const APP_CONFIG = {
 
   // Video assets (can drop actual MP4/WebM files into /public/videos/)
   videoAssets: {
-    heroDemo: `${import.meta.env.BASE_URL}videos/cursor-demo.mp4`,
-    showcase: `${import.meta.env.BASE_URL}videos/cursor-showcase.mp4`,
-    extensionOverview: `${import.meta.env.BASE_URL}videos/extension-demo.mp4`,
-    statesDemo: `${import.meta.env.BASE_URL}videos/cursor-states.mp4`,
+    heroDemo: '/videos/cursor-demo.mp4',
+    showcase: '/videos/cursor-showcase.mp4',
+    extensionOverview: '/videos/extension-demo.mp4',
+    statesDemo: '/videos/cursor-states.mp4',
   },
 
   // Download Cards Config

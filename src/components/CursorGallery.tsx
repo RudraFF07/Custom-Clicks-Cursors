@@ -3,6 +3,7 @@ import { CURSOR_COLLECTION, CURSOR_CATEGORIES } from '../data/cursors';
 import { CursorIcon } from './CursorIcon';
 import { CursorCategory, CursorItem } from '../types';
 import { Sliders, Copy, Check, MousePointer, Info, Crosshair } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export const CursorGallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<CursorCategory>('all');
@@ -57,7 +58,7 @@ export const CursorGallery: React.FC = () => {
       'right-arrow': 'right-arrow.svg',
     };
     const file = map[cursor.svgPath] || (cursor.svgPath.endsWith('.svg') ? cursor.svgPath : `${cursor.svgPath}.svg`);
-    return `url('${import.meta.env.BASE_URL}cursors/${file}') ${cursor.hotspot[0]} ${cursor.hotspot[1]}, ${cursor.cssState}`;
+    return `url('${getAssetUrl(`cursors/${file}`)}') ${cursor.hotspot[0]} ${cursor.hotspot[1]}, ${cursor.cssState}`;
   };
 
   const copyCssSnippet = (cursor: CursorItem, e: React.MouseEvent) => {

@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { CursorIcon } from './CursorIcon';
 import { FirefoxIcon, EdgeIcon } from './BrowserIcons';
 import { APP_CONFIG } from '../config';
+import { getAssetUrl } from '../utils/assets';
 
 interface HeroProps {
   onExploreClick?: () => void;
@@ -64,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onGetClicksClick }) 
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-neutral-800 text-[11px] font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-6 shadow-xs backdrop-blur-xs"
         >
           <img
-            src={`${import.meta.env.BASE_URL}customclick-icon.png`}
+            src={getAssetUrl('customclick-icon.png')}
             alt="Custom Clicks Icon"
             className="w-4 h-4 rounded-full object-cover shadow-xs"
             referrerPolicy="no-referrer"
