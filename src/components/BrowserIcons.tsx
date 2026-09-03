@@ -15,7 +15,7 @@ export const FirefoxIcon: React.FC<BrowserIconProps> = ({
 }) => {
   return (
     <img
-      src="/firefox.png"
+      src={`${import.meta.env.BASE_URL}firefox.png`}
       width={size}
       height={size}
       alt="Mozilla Firefox"
@@ -37,7 +37,7 @@ export const EdgeIcon: React.FC<BrowserIconProps> = ({
 }) => {
   return (
     <img
-      src="/edge.png"
+      src={`${import.meta.env.BASE_URL}edge.png`}
       width={size}
       height={size}
       alt="Microsoft Edge"

@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <img
-              src="/customclick-icon.png"
+              src={`${import.meta.env.BASE_URL}customclick-icon.png`}
               alt="Custom Clicks Icon"
               className="w-7 h-7 rounded-lg object-cover shadow-sm"
               referrerPolicy="no-referrer"
