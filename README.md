@@ -7,7 +7,8 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Manifest Version: V3](https://img.shields.io/badge/Manifest-V3-success.svg)](manifest.json)
 [![Browsers: Chrome | Firefox | Edge | Brave](https://img.shields.io/badge/Browsers-Chrome%20%7C%20Firefox%20%7C%20Edge%20%7C%20Brave-orange.svg)](#browser-support)
-[![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-brightgreen.svg)](#privacy)
+[![GitHub Release](https://img.shields.io/github/v/release/RudraFF07/Custom-Clicks-Cursors?logo=github&color=brightgreen)](https://github.com/RudraFF07/Custom-Clicks-Cursors/releases)
+[![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-brightgreen.svg)](https://github.com/RudraFF07/Custom-Clicks-Cursors#privacy)
 [![Zero Flicker](https://img.shields.io/badge/Performance-Zero%20Flicker-blueviolet.svg)](#features)
 
 <br />
@@ -181,9 +182,9 @@ Both **Chromium** (Manifest V3) and **Firefox** (Manifest V3 with Gecko configur
 
 ### GitHub Releases
 
-Pre-packaged extension archives are provided on the [Releases](https://github.com/) page:
+Pre-packaged extension archives are provided on the [GitHub Releases](https://github.com/RudraFF07/Custom-Clicks-Cursors/releases) page:
 
-1. Navigate to the **Releases** tab on GitHub.
+1. Navigate to the **[Releases](https://github.com/RudraFF07/Custom-Clicks-Cursors/releases)** section.
 2. Download the package for your browser:
    - `Custom_Clicks_Chromium.zip` (for Google Chrome, Edge, Brave, Opera, Vivaldi, Arc)
    - `Custom_Clicks_Firefox.zip` (for Mozilla Firefox, Librewolf, Waterfox)
@@ -252,35 +253,38 @@ Follow the standard manual instructions: extract the release ZIP and load the di
 
 We provide dedicated bash helper scripts in the [`installation/`](installation/) directory. These scripts safely stage the extension files into standard user space (`~/.local/share/custom-clicks-cursor/`), verify the `manifest.json` and 93 SVG assets, and display the exact instructions to activate it in your browser.
 
-#### For Google Chrome, Brave, Edge, Chromium:
+If you don't have the repository cloned or a release ZIP downloaded yet, the scripts can automatically download the latest release directly from GitHub Releases!
+
+#### Quick One-Liner (Terminal):
 
 ```bash
-# Make the helper script executable
-chmod +x installation/Chrome-linux-install.sh
+# For Chrome, Brave, Edge, Opera, Vivaldi:
+curl -fsSL https://raw.githubusercontent.com/RudraFF07/Custom-Clicks-Cursors/main/installation/Chrome-linux-install.sh | bash
 
-# Run with auto-detection (checks local repo or ~/Downloads)
-./installation/Chrome-linux-install.sh
-
-# Or provide a path to a downloaded ZIP file
-./installation/Chrome-linux-install.sh ~/Downloads/Custom_Clicks_Chromium.zip
+# For Mozilla Firefox & Librewolf:
+curl -fsSL https://raw.githubusercontent.com/RudraFF07/Custom-Clicks-Cursors/main/installation/Firefox-linux-install.sh | bash
 ```
 
-#### For Mozilla Firefox:
+#### From Local Repository Clone:
 
 ```bash
-# Make the helper script executable
-chmod +x installation/Firefox-linux-install.sh
+# Make helper scripts executable
+chmod +x installation/*.sh
 
-# Run with auto-detection
+# Run Chromium installer (auto-detects local files, ~/Downloads, or latest release)
+./installation/Chrome-linux-install.sh
+
+# Run Firefox installer
 ./installation/Firefox-linux-install.sh
 
-# Or provide a path to a downloaded ZIP file
-./installation/Firefox-linux-install.sh ~/Downloads/Custom_Clicks_Firefox.zip
+# Or provide an explicit path to a release ZIP
+./installation/Chrome-linux-install.sh ~/Downloads/Custom_Clicks_Chromium.zip
 ```
 
 **What the helper scripts do:**
 - Stage the extension in `~/.local/share/custom-clicks-cursor/<browser>/` so your files are kept safe in a predictable location.
 - Verify manifest syntax and ensure all 93 vector assets are intact.
+- Automatically fall back to downloading the latest release from [`RudraFF07/Custom-Clicks-Cursors`](https://github.com/RudraFF07/Custom-Clicks-Cursors) if local files aren't found.
 - Offer to open your browser directly to the extension management screen.
 - Never require root privileges (`sudo` is not needed).
 - Never modify unrelated system files or browser configuration files.
@@ -390,8 +394,8 @@ custom-clicks-cursor/
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/sayhitorudraksh/custom-clicks-cursor.git
-   cd custom-clicks-cursor
+   git clone https://github.com/RudraFF07/Custom-Clicks-Cursors.git
+   cd Custom-Clicks-Cursors
    ```
 2. Make edits to `extension/content.js`, `extension/cursor-map.js`, or the options pages.
 3. Sync changes to the browser-specific folders or load `extension/` directly in Developer Mode.
@@ -452,7 +456,7 @@ Custom Clicks Cursor incorporates and builds upon high-quality open-source theme
 
 - **Upstream Cursor Theme**: [WhiteSur Cursors](https://github.com/vinceliuice/WhiteSur-cursors) by **Vinceliuice**, licensed under **GNU General Public License v3.0 (GPL-3.0)**.
 - **Predecessor Lineage**: [Capitaine Cursors](https://github.com/keeferrourke/capitaine-cursors) by **Keefer Rourke**, licensed under **LGPL v3.0**.
-- **Extension Author & Maintainer**: **Rudraksh** ([@sayhitorudraksh](mailto:sayhitorudraksh@gmail.com))
+- **Extension Author & Maintainer**: **Rudraksh** ([@RudraFF07](https://github.com/RudraFF07) • [sayhitorudraksh@gmail.com](mailto:sayhitorudraksh@gmail.com))
 
 For complete attributions and SPDX identifiers, see [`CREDITS.md`](CREDITS.md).
 
