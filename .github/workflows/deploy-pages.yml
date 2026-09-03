@@ -30,20 +30,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build website
+      - name: Build
         run: npm run build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload website
+      - name: Upload build
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
 
     environment:
       name: github-pages
