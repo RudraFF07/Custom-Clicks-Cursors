@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Clicks Cursor Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title-area">
+        <h1>Custom Clicks Cursor Manager</h1>
+        <p class="subtitle">Intelligently map standard CSS cursor keywords to custom SVG assets.</p>
+      </div>
+      <div class="toggle-master">
+        <label class="switch">
+          <input type="checkbox" id="masterToggle" checked>
+          <span class="slider"></span>
+        </label>
+        <span id="masterToggleLabel">Extension Enabled</span>
+      </div>
+    </header>
+
+    <!-- Excluded Websites Section -->
+    <section class="card">
+      <h2>Domain Exclusions</h2>
+      <p class="desc">Websites listed here will always use their original native cursors.</p>
+      <div class="input-row">
+        <input type="text" id="newDomainInput" placeholder="e.g. docs.google.com or figma.com">
+        <button id="addDomainBtn" class="btn primary">Add Domain</button>
+      </div>
+      <div id="domainTags" class="tags-container"></div>
+    </section>
+
+    <!-- Hotspot & Mapping Config Section -->
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>CSS Cursor Mappings & Hotspots</h2>
+          <p class="desc">Configure file mappings and hotspot coordinates for standard CSS cursor keywords.</p>
+        </div>
+        <div class="btn-group">
+          <button id="addMappingBtn" class="btn secondary">+ Add Custom Mapping</button>
+          <button id="resetDefaultsBtn" class="btn danger">Restore Defaults</button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="mapping-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">Active</th>
+              <th>CSS Keyword</th>
+              <th>Custom SVG File</th>
+              <th>Hotspot X</th>
+              <th>Hotspot Y</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="mappingTableBody">
+            <!-- Populated dynamically by options.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Custom Mapping Modal -->
+    <div id="customModal" class="modal hidden">
+      <div class="modal-content">
+        <h3 id="modalTitle">Add New Cursor Mapping</h3>
+        <div class="form-group">
+          <label for="modalKeyword">CSS Cursor Keyword</label>
+          <input type="text" id="modalKeyword" placeholder="e.g. custom-hand or zoom-in">
+        </div>
+        <div class="form-group">
+          <label for="modalFile">SVG Asset Filename (inside cursors/ directory)</label>
+          <input type="text" id="modalFile" placeholder="e.g. pointer.svg">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="modalHotspotX">Hotspot X (px)</label>
+            <input type="number" id="modalHotspotX" value="1" min="0" max="64">
+          </div>
+          <div class="form-group">
+            <label for="modalHotspotY">Hotspot Y (px)</label>
+            <input type="number" id="modalHotspotY" value="1" min="0" max="64">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="modalDesc">Description (Optional)</label>
+          <input type="text" id="modalDesc" placeholder="Brief note about usage">
+        </div>
+        <div class="modal-actions">
+          <button id="modalCancelBtn" class="btn secondary">Cancel</button>
+          <button id="modalSaveBtn" class="btn primary">Save Mapping</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backup & Export -->
+    <section class="card">
+      <h2>Backup & Configuration Sync</h2>
+      <p class="desc">Export your mappings and hotspot calibrations as JSON to backup or share between profiles.</p>
+      <div class="btn-group">
+        <button id="exportJsonBtn" class="btn secondary">Export Configuration JSON</button>
+        <label class="btn secondary file-label">
+          Import Configuration JSON
+          <input type="file" id="importJsonInput" accept=".json" style="display:none;">
+        </label>
+      </div>
+      <div id="statusMessage" class="status-msg hidden"></div>
+    </section>
+  </div>
+
+  <script src="cursor-map.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
