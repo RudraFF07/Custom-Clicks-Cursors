@@ -23,10 +23,13 @@ RESET="\033[0m"
 # Default install target directory in user space
 DEST_DIR="${HOME}/.local/share/custom-clicks-cursor/chromium"
 SOURCE_INPUT="${1:-}"
+GITHUB_REPO="RudraFF07/Custom-Clicks-Cursors"
+RELEASE_URL="https://github.com/${GITHUB_REPO}/releases/latest/download/Custom_Clicks_Chromium.zip"
 
 echo -e "${BOLD}${BLUE}======================================================${RESET}"
 echo -e "${BOLD}${CYAN}   Custom Clicks Cursor — Chromium Linux Helper   ${RESET}"
-echo -e "${BOLD}${BLUE}======================================================${RESET}\n"
+echo -e "${BOLD}${BLUE}======================================================${RESET}"
+echo -e "Repository: ${CYAN}https://github.com/${GITHUB_REPO}${RESET}\n"
 
 # Step 1: Locate Source Extension Files
 SOURCE_PATH=""
@@ -41,8 +44,8 @@ if [[ -n "${SOURCE_INPUT}" ]]; then
   fi
 else
   # Auto-detection hierarchy
-  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-.}")" 2>/dev/null && pwd || pwd)"
+  REPO_ROOT="$(cd "${SCRIPT_DIR}/.." 2>/dev/null && pwd || pwd)"
 
   if [[ -f "${REPO_ROOT}/Chromium/Custom_Clicks_Chromium/manifest.json" ]]; then
     SOURCE_PATH="${REPO_ROOT}/Chromium/Custom_Clicks_Chromium"
@@ -61,12 +64,36 @@ else
   fi
 fi
 
+# Fallback: Attempt download from GitHub Releases
 if [[ -z "${SOURCE_PATH}" ]]; then
-  echo -e "${RED}✘ Error:${RESET} Could not find extension source files or release ZIP."
-  echo -e "Usage:"
-  echo -e "  $0 [path/to/Custom_Clicks_Chromium.zip | path/to/extension_folder]"
-  echo -e "\nPlease download the Chromium release ZIP from GitHub Releases or run this from the repository."
-  exit 1
+  echo -e "${YELLOW}ℹ Local extension files not found. Checking online GitHub Releases...${RESET}"
+  TEMP_DOWNLOAD_DIR="${HOME}/.cache/custom-clicks-cursor"
+  mkdir -p "${TEMP_DOWNLOAD_DIR}"
+  DOWNLOAD_FILE="${TEMP_DOWNLOAD_DIR}/Custom_Clicks_Chromium.zip"
+
+  DOWNLOAD_SUCCESS=false
+  if command -v curl >/dev/null 2>&1; then
+    echo -e "Downloading latest release from ${CYAN}${RELEASE_URL}${RESET}..."
+    if curl -fL -sS -o "${DOWNLOAD_FILE}" "${RELEASE_URL}"; then
+      DOWNLOAD_SUCCESS=true
+    fi
+  elif command -v wget >/dev/null 2>&1; then
+    echo -e "Downloading latest release from ${CYAN}${RELEASE_URL}${RESET}..."
+    if wget -q -O "${DOWNLOAD_FILE}" "${RELEASE_URL}"; then
+      DOWNLOAD_SUCCESS=true
+    fi
+  fi
+
+  if [[ "${DOWNLOAD_SUCCESS}" == "true" && -f "${DOWNLOAD_FILE}" ]]; then
+    SOURCE_PATH="${DOWNLOAD_FILE}"
+    echo -e "${GREEN}✔${RESET} Successfully downloaded release to: ${CYAN}${SOURCE_PATH}${RESET}"
+  else
+    echo -e "${RED}✘ Error:${RESET} Could not find extension source files, and automated download failed."
+    echo -e "Usage:"
+    echo -e "  $0 [path/to/Custom_Clicks_Chromium.zip | path/to/extension_folder]"
+    echo -e "\nPlease download the Chromium release ZIP from: ${CYAN}https://github.com/${GITHUB_REPO}/releases${RESET}"
+    exit 1
+  fi
 fi
 
 # Step 2: Prepare Target Directory
@@ -132,11 +159,11 @@ echo -e "  ${BOLD}4.${RESET} Select this directory in the file dialog:\n"
 echo -e "     ${BOLD}${GREEN}${DEST_DIR}${RESET}\n"
 echo -e "  ${BOLD}5.${RESET} Pin the extension icon to your toolbar and enjoy!\n"
 
-# Optional: Attempt to open the extensions page if in a graphical session
-if [[ -n "${DISPLAY:-}" || -n "${WAYLAND_DISPLAY:-}" ]]; then
+# Optional: Attempt to open the extensions page if in a graphical session and interactive terminal
+if [[ -t 0 && ( -n "${DISPLAY:-}" || -n "${WAYLAND_DISPLAY:-}" ) ]]; then
   echo -e "Would you like to open your browser extensions page now? [Y/n] "
-  read -r -t 10 CONFIRM || CONFIRM="y"
-  CONFIRM=${CONFIRM:-y}
+  read -r -t 10 CONFIRM || CONFIRM="n"
+  CONFIRM=${CONFIRM:-n}
   if [[ "${CONFIRM}" =~ ^[Yy]$ ]]; then
     if command -v google-chrome >/dev/null 2>&1; then
       google-chrome "chrome://extensions" >/dev/null 2>&1 &

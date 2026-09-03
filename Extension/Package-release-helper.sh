@@ -15,7 +15,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 DIST_DIR="${REPO_ROOT}/dist/releases"
 
-echo "Building release archives in: ${DIST_DIR}"
+GITHUB_REPO="RudraFF07/Custom-Clicks-Cursors"
+
+echo "Building release archives for ${GITHUB_REPO} in: ${DIST_DIR}"
 mkdir -p "${DIST_DIR}"
 
 create_zip() {
@@ -73,3 +75,8 @@ if [[ -f "${DIST_DIR}/SHA256SUMS.txt" ]]; then
 fi
 
 echo -e "\n✔ Release packaging complete!"
+echo -e "Files ready in: ${DIST_DIR}"
+echo -e "\nTo publish these files to GitHub Releases:"
+echo -e "  1. Web UI: https://github.com/${GITHUB_REPO}/releases/new"
+echo -e "  2. GitHub CLI:"
+echo -e "     gh release create v1.0.0 ${DIST_DIR}/*.zip ${DIST_DIR}/SHA256SUMS.txt --repo ${GITHUB_REPO} --title \"Custom Clicks Cursor v1.0.0\""
