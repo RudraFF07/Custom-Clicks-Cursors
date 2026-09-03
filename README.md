@@ -10,7 +10,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/RudraFF07/Custom-Clicks-Cursors?logo=github&color=brightgreen)](https://github.com/RudraFF07/Custom-Clicks-Cursors/releases)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-brightgreen.svg)](https://github.com/RudraFF07/Custom-Clicks-Cursors#privacy)
 [![Zero Flicker](https://img.shields.io/badge/Performance-Zero%20Flicker-blueviolet.svg)](#features)
-
+Visit www.custom-clicks-cursor.ai.studio Or https://rudraff07.github.io/Custom-Clicks-Cursors/
 <br />
 
 <img src="Promotional/large_promotional_tile_1400x560.png" alt="Custom Clicks Cursor Banner" width="100%" style="border-radius: 8px;" />
