@@ -30,7 +30,7 @@ export const APP_CONFIG = {
 
   // Store & Repository URLs (configured in one place)
   urls: {
-    edgeStore: 'https://microsoftedge.microsoft.com/addons/detail/custom-clicks-cursor',
+    edgeStore: 'https://microsoftedge.microsoft.com/addons/detail/custom-clicks-cursor/mmogkgejfphpjdjkokejfipnnhogfcfg',
     firefoxAddons: '#firefox-install', // User will supply exact page URL later
     github: 'https://github.com/RudraFF07/CustomClicksCursors',
     githubIssues: 'https://github.com/RudraFF07/CustomClicksCursors/issues',
@@ -67,7 +67,7 @@ export const APP_CONFIG = {
       title: 'Get it from Microsoft Edge Extension store',
       subtitle: 'Install directly from the Microsoft Edge Add-ons store with instant sync.',
       ctaText: 'Get it on Microsoft Edge',
-      url: 'https://microsoftedge.microsoft.com/addons/detail/custom-clicks-cursor',
+      url: 'https://microsoftedge.microsoft.com/addons/detail/custom-clicks-cursor/mmogkgejfphpjdjkokejfipnnhogfcfg',
       isLive: true,
       badgeText: 'Edge Add-ons',
       iconName: 'edge',
