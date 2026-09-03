@@ -32,9 +32,9 @@ export const APP_CONFIG = {
   urls: {
     edgeStore: 'https://microsoftedge.microsoft.com/addons/detail/custom-clicks-cursor/mmogkgejfphpjdjkokejfipnnhogfcfg',
     firefoxAddons: '#firefox-install', // User will supply exact page URL later
-    github: 'https://github.com/RudraFF07/CustomClicksCursors',
-    githubIssues: 'https://github.com/RudraFF07/CustomClicksCursors/issues',
-    githubReleases: 'https://github.com/RudraFF07/CustomClicksCursors/releases',
+    github: 'https://github.com/RudraFF07/Custom-Clicks-Cursors',
+    githubIssues: 'https://github.com/RudraFF07/Custom-Clicks-Cursors/issues',
+    githubReleases: 'https://github.com/RudraFF07/Custom-Clicks-Cursors/releases',
     whiteSurSource: 'https://github.com/vinceliuice/WhiteSur-cursors',
   },
 
@@ -80,7 +80,7 @@ export const APP_CONFIG = {
       title: 'GitHub Releases & Source',
       subtitle: 'Full source code, unpacked extensions, issue tracker, and contributions.',
       ctaText: 'View on GitHub',
-      url: 'https://github.com/RudraFF07/CustomClicksCursors',
+      url: 'https://github.com/RudraFF07/Custom-Clicks-Cursors',
       isLive: true,
       badgeText: 'GNU GPL v3',
       iconName: 'github',
