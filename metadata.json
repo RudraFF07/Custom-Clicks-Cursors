@@ -1,0 +1,7 @@
+{
+  "name": "Custom Clicks Cursor",
+  "description": "A modern browser cursor replacement with 90+ handcrafted vector cursors, zero-flicker behavior, smart web protection, and a privacy-first offline architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
