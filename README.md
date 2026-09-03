@@ -241,52 +241,121 @@ Install the signed `.xpi` directly from Mozilla Add-ons without developer prompt
 
 ## Linux Installation
 
-On Linux distributions (Ubuntu, Fedora, Arch, Debian, openSUSE, etc.), you can install Custom Clicks Cursor either manually or using our automated staging helper scripts.
+Custom Clicks Cursor works on Linux with Chromium-based browsers and Firefox.
 
-### Method 1 — Manual Loading
-Follow the standard manual instructions: extract the release ZIP and load the directory via your browser's extension manager (`chrome://extensions` or `about:debugging`).
+The Linux helper scripts stage the extension in a permanent user directory under:
+
+```text
+~/.local/share/custom-clicks-cursor/
+```
+
+No `sudo` or root privileges are required.
+
+### Method 1 — Clone and Install from the Command Line
+
+This is the recommended command-line installation method.
+
+#### Chromium Browsers
+
+For Google Chrome, Chromium, Brave, Microsoft Edge, Vivaldi, and Opera:
+
+```bash
+git clone --depth 1 https://github.com/RudraFF07/Custom-Clicks-Cursors.git
+cd Custom-Clicks-Cursors
+
+chmod +x Extension/Chrome-install-linux.sh
+
+./Extension/Chrome-install-linux.sh \
+  Extension/Custom_Clicks_Chromium/Custom_Clicks_Chromium
+```
+
+The extension will be staged at:
+
+```text
+~/.local/share/custom-clicks-cursor/chromium
+```
+
+Then open your browser's extensions page:
+
+* Chrome / Chromium / Vivaldi / Opera: `chrome://extensions`
+* Brave: `brave://extensions`
+* Microsoft Edge: `edge://extensions`
+
+Enable **Developer mode**, choose **Load unpacked**, and select:
+
+```text
+~/.local/share/custom-clicks-cursor/chromium
+```
 
 ---
 
-### Method 2 — Command-Line Helper Scripts
-
-We provide dedicated bash helper scripts in the [`installation/`](installation/) directory. These scripts safely stage the extension files into standard user space (`~/.local/share/custom-clicks-cursor/`), verify the `manifest.json` and 93 SVG assets, and display the exact instructions to activate it in your browser.
-
-If you don't have the repository cloned or a release ZIP downloaded yet, the scripts can automatically download the latest release directly from GitHub Releases!
-
-#### Quick One-Liner (Terminal):
+#### Firefox / LibreWolf
 
 ```bash
-# For Chrome, Brave, Edge, Opera, Vivaldi:
-curl -fsSL https://github.com/RudraFF07/Custom-Clicks-Cursors/raw/refs/heads/main/Extension/Releases/Custom_Clicks_Chromium.zip | bash
+git clone --depth 1 https://github.com/RudraFF07/Custom-Clicks-Cursors.git
+cd Custom-Clicks-Cursors
 
-# For Mozilla Firefox & Librewolf:
-curl -fsSL https://github.com/RudraFF07/Custom-Clicks-Cursors/raw/refs/heads/main/Extension/Releases/Custom_Clicks_Firefox.zip | bash
+chmod +x Extension/Firefox-install-linux.sh
+
+./Extension/Firefox-install-linux.sh \
+  Extension/Custom_Clicks_Firefox/Custom_Clicks_Firefox
 ```
 
-#### From Local Repository Clone:
+The extension will be staged at:
 
-```bash
-# Make helper scripts executable
-chmod +x installation/*.sh
-
-# Run Chromium installer (auto-detects local files, ~/Downloads, or latest release)
-./installation/Chrome-linux-install.sh
-
-# Run Firefox installer
-./installation/Firefox-linux-install.sh
-
-# Or provide an explicit path to a release ZIP
-./installation/Chrome-linux-install.sh ~/Downloads/Custom_Clicks_Chromium.zip
+```text
+~/.local/share/custom-clicks-cursor/firefox
 ```
 
-**What the helper scripts do:**
-- Stage the extension in `~/.local/share/custom-clicks-cursor/<browser>/` so your files are kept safe in a predictable location.
-- Verify manifest syntax and ensure all 93 vector assets are intact.
-- Automatically fall back to downloading the latest release from [`RudraFF07/Custom-Clicks-Cursors`](https://github.com/RudraFF07/Custom-Clicks-Cursors) if local files aren't found.
-- Offer to open your browser directly to the extension management screen.
-- Never require root privileges (`sudo` is not needed).
-- Never modify unrelated system files or browser configuration files.
+In Firefox, open:
+
+```text
+about:debugging#/runtime/this-firefox
+```
+
+Select **Load Temporary Add-on...** and choose:
+
+```text
+~/.local/share/custom-clicks-cursor/firefox/manifest.json
+```
+
+> **Note:** Standard Firefox removes temporarily loaded extensions when Firefox is restarted. Permanent installation requires a signed Firefox add-on or a Firefox edition/configuration that permits unsigned extensions.
+
+---
+
+### Method 2 — Manual Installation
+
+You can also download the appropriate extension archive or source folder manually.
+
+#### Chromium
+
+Extract `Custom_Clicks_Chromium.zip`, open your browser's extensions manager, enable **Developer mode**, select **Load unpacked**, and choose the extracted directory containing `manifest.json`.
+
+#### Firefox
+
+Extract `Custom_Clicks_Firefox.zip`, open:
+
+```text
+about:debugging#/runtime/this-firefox
+```
+
+Select **Load Temporary Add-on...** and choose the extension's `manifest.json`.
+
+---
+
+### What the Linux Helper Scripts Do
+
+The helper scripts:
+
+* copy the extension into a predictable directory under `~/.local/share/custom-clicks-cursor/`;
+* verify that `manifest.json` exists;
+* check the bundled SVG cursor assets;
+* display the browser-specific activation instructions;
+* optionally open the browser's extensions page;
+* require no `sudo` privileges;
+* do not modify system browser configuration files.
+
+> **Security note:** Avoid commands that pipe an extension ZIP directly into `bash`. ZIP archives are not shell scripts and cannot be executed by Bash.
 
 ---
 
