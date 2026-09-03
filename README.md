@@ -259,10 +259,10 @@ If you don't have the repository cloned or a release ZIP downloaded yet, the scr
 
 ```bash
 # For Chrome, Brave, Edge, Opera, Vivaldi:
-curl -fsSL https://raw.githubusercontent.com/RudraFF07/Custom-Clicks-Cursors/main/installation/Chrome-linux-install.sh | bash
+curl -fsSL https://github.com/RudraFF07/Custom-Clicks-Cursors/releases/download/v1.0.0/Custom_Clicks_Chromium.zip | bash
 
 # For Mozilla Firefox & Librewolf:
-curl -fsSL https://raw.githubusercontent.com/RudraFF07/Custom-Clicks-Cursors/main/installation/Firefox-linux-install.sh | bash
+curl -fsSL https://github.com/RudraFF07/Custom-Clicks-Cursors/releases/download/v1.0.0/Custom_Clicks_Firefox.zip | bash
 ```
 
 #### From Local Repository Clone:
